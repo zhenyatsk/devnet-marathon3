@@ -1,0 +1,10 @@
+GW:
+    hostname: 192.88.99.1
+    port: 22
+    groups:
+        - cisco
+SW10:
+    hostname: 192.88.99.2
+    port: 22
+    groups:
+        - cisco

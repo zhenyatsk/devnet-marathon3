@@ -1,0 +1,110 @@
+{
+    "links": [
+        {
+            "Destination": "SW10",
+            "DestinationInterface": "Gi1/0/22",
+            "Source": "GW",
+            "SourceInterface": "Gi0/0"
+        },
+        {
+            "Destination": "SW10",
+            "DestinationInterface": "Gi1/0/21",
+            "Source": "GW",
+            "SourceInterface": "Gi0/1"
+        },
+        {
+            "Destination": "SW1",
+            "DestinationInterface": "Gi1/0/27",
+            "Source": "SW10",
+            "SourceInterface": "Gi1/0/1"
+        },
+        {
+            "Destination": "SW1",
+            "DestinationInterface": "Gi1/0/28",
+            "Source": "SW10",
+            "SourceInterface": "Gi1/0/2"
+        },
+        {
+            "Destination": "SW2",
+            "DestinationInterface": "Gi1/0/27",
+            "Source": "SW10",
+            "SourceInterface": "Gi1/0/3"
+        },
+        {
+            "Destination": "SW2",
+            "DestinationInterface": "Gi1/0/28",
+            "Source": "SW10",
+            "SourceInterface": "Gi1/0/4"
+        },
+        {
+            "Destination": "SW3",
+            "DestinationInterface": "Gi1/0/27",
+            "Source": "SW10",
+            "SourceInterface": "Gi1/0/5"
+        },
+        {
+            "Destination": "SW4",
+            "DestinationInterface": "Gi1/0/27",
+            "Source": "SW10",
+            "SourceInterface": "Gi1/0/6"
+        },
+        {
+            "Destination": "SW5",
+            "DestinationInterface": "Gi1/0/27",
+            "Source": "SW10",
+            "SourceInterface": "Gi1/0/8"
+        },
+        {
+            "Destination": "SW6",
+            "DestinationInterface": "Gi1/0/27",
+            "Source": "SW10",
+            "SourceInterface": "Gi1/0/10"
+        },
+        {
+            "Destination": "SW6",
+            "DestinationInterface": "Gi1/0/28",
+            "Source": "SW10",
+            "SourceInterface": "Gi1/0/11"
+        },
+        {
+            "Destination": "SW6",
+            "DestinationInterface": "Gi1/0/26",
+            "Source": "SW10",
+            "SourceInterface": "Gi1/0/12"
+        }
+    ],
+    "nodes": [
+        {
+            "Hostname": "GW",
+            "Type": "Router"
+        },
+        {
+            "Hostname": "SW10",
+            "Type": "Switch"
+        },
+        {
+            "Hostname": "SW1",
+            "Type": "Switch"
+        },
+        {
+            "Hostname": "SW2",
+            "Type": "Switch"
+        },
+        {
+            "Hostname": "SW3",
+            "Type": "Switch"
+        },
+        {
+            "Hostname": "SW4",
+            "Type": "Switch"
+        },
+        {
+            "Hostname": "SW5",
+            "Type": "Switch"
+        },
+        {
+            "Hostname": "SW6",
+            "Type": "Switch"
+        }
+    ]
+}

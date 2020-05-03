@@ -1,0 +1,142 @@
+{
+    "links": [
+        {
+            "Destination": "bgw01",
+            "DestinationInterface": "Gi1/0/47",
+            "Source": "sp01",
+            "SourceInterface": "Gi1/0/1"
+        },
+        {
+            "Destination": "bgw01",
+            "DestinationInterface": "Gi1/0/48",
+            "Source": "sp02",
+            "SourceInterface": "Gi1/0/1"
+        },
+        {
+            "Destination": "bgw02",
+            "DestinationInterface": "Gi1/0/47",
+            "Source": "sp01",
+            "SourceInterface": "Gi1/0/2"
+        },
+        {
+            "Destination": "bgw02",
+            "DestinationInterface": "Gi1/0/48",
+            "Source": "sp02",
+            "SourceInterface": "Gi1/0/2"
+        },
+        {
+            "Destination": "bl01",
+            "DestinationInterface": "Gi1/0/47",
+            "Source": "sp01",
+            "SourceInterface": "Gi1/0/3"
+        },
+        {
+            "Destination": "bl01",
+            "DestinationInterface": "Gi1/0/48",
+            "Source": "sp02",
+            "SourceInterface": "Gi1/0/3"
+        },
+        {
+            "Destination": "bl02",
+            "DestinationInterface": "Gi1/0/47",
+            "Source": "sp01",
+            "SourceInterface": "Gi1/0/4"
+        },
+        {
+            "Destination": "bl02",
+            "DestinationInterface": "Gi1/0/48",
+            "Source": "sp02",
+            "SourceInterface": "Gi1/0/4"
+        },
+        {
+            "Destination": "lf01",
+            "DestinationInterface": "Gi1/0/47",
+            "Source": "sp01",
+            "SourceInterface": "Gi1/0/5"
+        },
+        {
+            "Destination": "lf01",
+            "DestinationInterface": "Gi1/0/48",
+            "Source": "sp02",
+            "SourceInterface": "Gi1/0/5"
+        },
+        {
+            "Destination": "lf02",
+            "DestinationInterface": "Gi1/0/47",
+            "Source": "sp01",
+            "SourceInterface": "Gi1/0/6"
+        },
+        {
+            "Destination": "lf02",
+            "DestinationInterface": "Gi1/0/48",
+            "Source": "sp02",
+            "SourceInterface": "Gi1/0/6"
+        },
+        {
+            "Destination": "lf03",
+            "DestinationInterface": "Gi1/0/47",
+            "Source": "sp01",
+            "SourceInterface": "Gi1/0/7"
+        },
+        {
+            "Destination": "lf03",
+            "DestinationInterface": "Gi1/0/48",
+            "Source": "sp02",
+            "SourceInterface": "Gi1/0/7"
+        },
+        {
+            "Destination": "lf04",
+            "DestinationInterface": "Gi1/0/47",
+            "Source": "sp01",
+            "SourceInterface": "Gi1/0/8"
+        },
+        {
+            "Destination": "lf04",
+            "DestinationInterface": "Gi1/0/48",
+            "Source": "sp02",
+            "SourceInterface": "Gi1/0/8"
+        }
+    ],
+    "nodes": [
+        {
+            "Hostname": "bgw01",
+            "Type": "Router"
+        },
+        {
+            "Hostname": "bgw02",
+            "Type": "Router"
+        },
+        {
+            "Hostname": "bl01",
+            "Type": "Router"
+        },
+        {
+            "Hostname": "bl02",
+            "Type": "Router"
+        },
+        {
+            "Hostname": "sp01",
+            "Type": "Router"
+        },
+        {
+            "Hostname": "sp02",
+            "Type": "Router"
+        },
+        {
+            "Hostname": "lf01",
+            "Type": "Router"
+        },
+        {
+            "Hostname": "lf02",
+            "Type": "Router"
+        },
+        {
+            "Hostname": "lf03",
+            "Type": "Router"
+        },
+        {
+            "Hostname": "lf04",
+            "Type": "Router"
+        }
+    ]
+}
