@@ -1,10 +1,12 @@
 import re
 import json
+import datetime
 
 from nornir import InitNornir
 from nornir.core.task import Result
 from nornir.plugins.tasks import networking
 from collections import defaultdict
+from shutil import copy2
 
 
 def get_lldp_neighbors(task):
@@ -113,6 +115,19 @@ def prepare_topology_data(nodes, data):
     return topology_data
 
 
+def write_topology(data):
+    out = open('data/topology.json', 'w')
+    out.write(json.dumps(data, indent=4, sort_keys=True))
+    out.close()
+
+    print(f'topology data has written to file')
+
+    timestamp = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M")
+    copy2('data/topology.json', f'data/topology_{timestamp}.json')
+
+    print(f'topology data has been saved')
+
+
 def generate_topology_data():
     nr = InitNornir(config_file='config.yaml')
 
@@ -122,11 +137,7 @@ def generate_topology_data():
 
     topology = prepare_topology_data(nodes=nodes, data=result)
 
-    out = open("data/topology.json", "w")
-    out.write(json.dumps(topology, indent=4, sort_keys=True))
-    out.close()
-
-    print(f'topology data has written to file')
+    write_topology(data=topology)
 
 
 if __name__ == "__main__":
