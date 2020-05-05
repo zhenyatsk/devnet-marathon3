@@ -59,11 +59,11 @@ getJSON('../data/topology.json',  function(err, parsed) {
     } else {
 
     parsed.nodes = parsed.nodes.map(function(ele) { return {
-      id: ele.Hostname, label: ele.Hostname, image: ele.Type + ".png"
+      id: ele.Hostname, label: ele.Hostname, image: ele.Type + ".png", font: {color: ele.color}
     }})
 
     parsed.links = parsed.links.map(function(ele) { return {
-      from: ele.Source, to: ele.Destination, labelFrom: ele.SourceInterface, labelTo: ele.DestinationInterface
+      from: ele.Source, to: ele.Destination, labelFrom: ele.SourceInterface, labelTo: ele.DestinationInterface, color: {color: ele.color}
     }})
 
     // provide the data in the vis format

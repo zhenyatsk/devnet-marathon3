@@ -1,12 +1,21 @@
 import re
 import json
 import datetime
+import os
 
+from pathlib import Path
 from nornir import InitNornir
 from nornir.core.task import Result
 from nornir.plugins.tasks import networking
 from collections import defaultdict
 from shutil import copy2
+
+TOPOLOGY_CURRENT = 'data/topology.json'
+TOPOLOGY_PREV = 'data/topology_prev.json'
+
+REMOVED_COLOR = 'red'
+ADDED_COLOR = 'green'
+NOT_CHANGED_COLOR = 'black'
 
 
 def get_lldp_neighbors(task):
@@ -115,17 +124,101 @@ def prepare_topology_data(nodes, data):
     return topology_data
 
 
+def archive_topology():
+    #copy current topology to prev
+    if os.path.exists(TOPOLOGY_CURRENT):
+        copy2(TOPOLOGY_CURRENT, TOPOLOGY_PREV)
+
+
 def write_topology(data):
-    out = open('data/topology.json', 'w')
+    # create dir if it not exists
+    Path("data/archive").mkdir(parents=True, exist_ok=True)
+
+    out = open(TOPOLOGY_CURRENT, 'w')
     out.write(json.dumps(data, indent=4, sort_keys=True))
     out.close()
 
     print(f'topology data has written to file')
 
     timestamp = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M")
-    copy2('data/topology.json', f'data/topology_{timestamp}.json')
+    copy2(TOPOLOGY_CURRENT, f'data/archive/topology_{timestamp}.json')
 
     print(f'topology data has been saved')
+
+
+def compare_nodes(source, destination, with_delta, delta_color):
+    for node in destination['nodes']:
+        # check exist in source
+        if not any(d['Hostname'] == node['Hostname'] for d in source['nodes']):
+            # add it to delta data if color is not delta_color
+            if node.get('color') != delta_color:
+                with_delta['nodes'].append({'Hostname': node['Hostname'], 'Type': node['Type'], 'color': delta_color})
+        else:
+            # avoid duplicates in nodes list
+            if not any(d['Hostname'] == node['Hostname'] for d in with_delta['nodes']):
+                with_delta['nodes'].append({
+                    'Hostname': node['Hostname'],
+                    'Type': node['Type'],
+                    'color': NOT_CHANGED_COLOR
+                })
+
+
+def compare_links(source, destination, with_delta, delta_color):
+    for link in destination['links']:
+        # check exist in source
+        if not any(
+                d['Source'] == link['Source'] and
+                d['Destination'] == link['Destination'] and
+                d['SourceInterface'] == link['SourceInterface'] and
+                d['DestinationInterface'] == link['DestinationInterface']
+                for d in source['links']
+        ):
+            # add it to delta data if color is not delta_color
+            if link.get('color') != delta_color:
+                with_delta['links'].append({
+                    'Source': link['Source'],
+                    'Destination': link['Destination'],
+                    'SourceInterface': link['SourceInterface'],
+                    'DestinationInterface': link['DestinationInterface'],
+                    'color': delta_color
+                })
+        else:
+            if not any(
+                    d['Source'] == link['Source'] and
+                    d['Destination'] == link['Destination'] and
+                    d['SourceInterface'] == link['SourceInterface'] and
+                    d['DestinationInterface'] == link['DestinationInterface']
+                    for d in with_delta['links']
+            ):
+                with_delta['links'].append({
+                    'Source': link['Source'],
+                    'Destination': link['Destination'],
+                    'SourceInterface': link['SourceInterface'],
+                    'DestinationInterface': link['DestinationInterface'],
+                    'color': NOT_CHANGED_COLOR
+                })
+
+
+def compare_topology(current):
+    try:
+        prev_file = open(TOPOLOGY_PREV)
+        prev = json.load(prev_file)
+    except (OSError, IOError) as e:
+        prev = {'links': [], 'nodes': []}
+
+    with_delta = defaultdict(list)
+
+    # let's find new nodes and mark it with green
+    compare_nodes(source=prev, destination=current, with_delta=with_delta, delta_color=ADDED_COLOR)
+    # let's find new nodes and mark it with red
+    compare_nodes(source=current, destination=prev, with_delta=with_delta, delta_color=REMOVED_COLOR)
+
+    # let's find new nodes and mark it with green
+    compare_links(source=prev, destination=current, with_delta=with_delta, delta_color=ADDED_COLOR)
+    # let's find new nodes and mark it with red
+    compare_links(source=current, destination=prev, with_delta=with_delta, delta_color=REMOVED_COLOR)
+
+    return with_delta
 
 
 def generate_topology_data():
@@ -136,6 +229,10 @@ def generate_topology_data():
     result = nr.run(task=collect_neighbors, nodes=nodes)
 
     topology = prepare_topology_data(nodes=nodes, data=result)
+
+    archive_topology()
+
+    topology = compare_topology(current=topology)
 
     write_topology(data=topology)
 

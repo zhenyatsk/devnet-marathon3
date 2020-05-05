@@ -4,139 +4,165 @@
             "Destination": "bgw01",
             "DestinationInterface": "Gi1/0/47",
             "Source": "sp01",
-            "SourceInterface": "Gi1/0/1"
+            "SourceInterface": "Gi1/0/1",
+            "color": "black"
         },
         {
             "Destination": "bgw01",
             "DestinationInterface": "Gi1/0/48",
             "Source": "sp02",
-            "SourceInterface": "Gi1/0/1"
+            "SourceInterface": "Gi1/0/1",
+            "color": "black"
         },
         {
             "Destination": "bgw02",
             "DestinationInterface": "Gi1/0/47",
             "Source": "sp01",
-            "SourceInterface": "Gi1/0/2"
+            "SourceInterface": "Gi1/0/2",
+            "color": "black"
         },
         {
             "Destination": "bgw02",
             "DestinationInterface": "Gi1/0/48",
             "Source": "sp02",
-            "SourceInterface": "Gi1/0/2"
+            "SourceInterface": "Gi1/0/2",
+            "color": "black"
         },
         {
             "Destination": "bl01",
             "DestinationInterface": "Gi1/0/47",
             "Source": "sp01",
-            "SourceInterface": "Gi1/0/3"
+            "SourceInterface": "Gi1/0/3",
+            "color": "black"
         },
         {
             "Destination": "bl01",
             "DestinationInterface": "Gi1/0/48",
             "Source": "sp02",
-            "SourceInterface": "Gi1/0/3"
+            "SourceInterface": "Gi1/0/3",
+            "color": "black"
         },
         {
             "Destination": "bl02",
             "DestinationInterface": "Gi1/0/47",
             "Source": "sp01",
-            "SourceInterface": "Gi1/0/4"
+            "SourceInterface": "Gi1/0/4",
+            "color": "black"
         },
         {
             "Destination": "bl02",
             "DestinationInterface": "Gi1/0/48",
             "Source": "sp02",
-            "SourceInterface": "Gi1/0/4"
+            "SourceInterface": "Gi1/0/4",
+            "color": "black"
         },
         {
             "Destination": "lf01",
             "DestinationInterface": "Gi1/0/47",
             "Source": "sp01",
-            "SourceInterface": "Gi1/0/5"
+            "SourceInterface": "Gi1/0/5",
+            "color": "black"
         },
         {
             "Destination": "lf01",
             "DestinationInterface": "Gi1/0/48",
             "Source": "sp02",
-            "SourceInterface": "Gi1/0/5"
+            "SourceInterface": "Gi1/0/5",
+            "color": "black"
         },
         {
             "Destination": "lf02",
             "DestinationInterface": "Gi1/0/47",
             "Source": "sp01",
-            "SourceInterface": "Gi1/0/6"
+            "SourceInterface": "Gi1/0/6",
+            "color": "black"
         },
         {
             "Destination": "lf02",
             "DestinationInterface": "Gi1/0/48",
             "Source": "sp02",
-            "SourceInterface": "Gi1/0/6"
+            "SourceInterface": "Gi1/0/6",
+            "color": "black"
         },
         {
             "Destination": "lf03",
             "DestinationInterface": "Gi1/0/47",
             "Source": "sp01",
-            "SourceInterface": "Gi1/0/7"
+            "SourceInterface": "Gi1/0/7",
+            "color": "black"
         },
         {
             "Destination": "lf03",
             "DestinationInterface": "Gi1/0/48",
             "Source": "sp02",
-            "SourceInterface": "Gi1/0/7"
+            "SourceInterface": "Gi1/0/7",
+            "color": "black"
         },
         {
             "Destination": "lf04",
             "DestinationInterface": "Gi1/0/47",
             "Source": "sp01",
-            "SourceInterface": "Gi1/0/8"
+            "SourceInterface": "Gi1/0/8",
+            "color": "black"
         },
         {
             "Destination": "lf04",
             "DestinationInterface": "Gi1/0/48",
             "Source": "sp02",
-            "SourceInterface": "Gi1/0/8"
+            "SourceInterface": "Gi1/0/8",
+            "color": "black"
         }
     ],
     "nodes": [
         {
             "Hostname": "bgw01",
-            "Type": "Router"
+            "Type": "Router",
+            "color": "black"
         },
         {
             "Hostname": "bgw02",
-            "Type": "Router"
+            "Type": "Router",
+            "color": "black"
         },
         {
             "Hostname": "bl01",
-            "Type": "Router"
+            "Type": "Router",
+            "color": "black"
         },
         {
             "Hostname": "bl02",
-            "Type": "Router"
+            "Type": "Router",
+            "color": "black"
         },
         {
             "Hostname": "sp01",
-            "Type": "Router"
+            "Type": "Router",
+            "color": "black"
         },
         {
             "Hostname": "sp02",
-            "Type": "Router"
+            "Type": "Router",
+            "color": "black"
         },
         {
             "Hostname": "lf01",
-            "Type": "Router"
+            "Type": "Router",
+            "color": "black"
         },
         {
             "Hostname": "lf02",
-            "Type": "Router"
+            "Type": "Router",
+            "color": "black"
         },
         {
             "Hostname": "lf03",
-            "Type": "Router"
+            "Type": "Router",
+            "color": "black"
         },
         {
             "Hostname": "lf04",
-            "Type": "Router"
+            "Type": "Router",
+            "color": "black"
         }
     ]
 }
