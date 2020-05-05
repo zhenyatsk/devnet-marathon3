@@ -210,12 +210,12 @@ def compare_topology(current):
 
     # let's find new nodes and mark it with green
     compare_nodes(source=prev, destination=current, with_delta=with_delta, delta_color=ADDED_COLOR)
-    # let's find new nodes and mark it with red
+    # let's find removed nodes and mark it with red
     compare_nodes(source=current, destination=prev, with_delta=with_delta, delta_color=REMOVED_COLOR)
 
     # let's find new nodes and mark it with green
     compare_links(source=prev, destination=current, with_delta=with_delta, delta_color=ADDED_COLOR)
-    # let's find new nodes and mark it with red
+    # let's find removed nodes and mark it with red
     compare_links(source=current, destination=prev, with_delta=with_delta, delta_color=REMOVED_COLOR)
 
     return with_delta
