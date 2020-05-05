@@ -221,6 +221,15 @@ def compare_topology(current):
     return with_delta
 
 
+def validate_data(data):
+    key_list = ('nodes', 'links')
+    for key in key_list:
+        if not data.get(key):
+            return False
+
+    return True
+
+
 def generate_topology_data():
     nr = InitNornir(config_file='config.yaml')
 
@@ -230,12 +239,11 @@ def generate_topology_data():
 
     topology = prepare_topology_data(nodes=nodes, data=result)
 
+    if not validate_data(data=topology):
+        return
+
     archive_topology()
 
     topology = compare_topology(current=topology)
 
     write_topology(data=topology)
-
-
-if __name__ == "__main__":
-    generate_topology_data()
