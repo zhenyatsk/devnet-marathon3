@@ -1,4 +1,4 @@
-Flask==1.1.2
+Flask==2.3.2
 netmiko==2.4.2
 nornir==2.4.0
 jsonpickle
